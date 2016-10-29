@@ -1,6 +1,11 @@
 /*************************************************************************
  * @description
- * A bitmask utility. Can hold the true or false state of up to 31 variables;
+ * A bitmask utility. Can hold the true or false state for up to 31 variables;
+ * Usage:
+ * 
+ * let bm = bitmask('tall','kind','beautifull');
+ * bm.set('tall');
+ * bm.test('tall');
  * 
  * @author
  * Diogo Dauster Pontual (diogopontual@gmail.com)
