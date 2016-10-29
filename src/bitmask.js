@@ -1,7 +1,7 @@
 const bitmask = function () {
     if (arguments.length > 31)
         throw "The maximum number of constants is 31";
-    let ret = {};
+    let ret = Object.create(bitmaskProto);
     ret.state = 0;
     ret.variables = {};
     for (let i = 0; i < arguments.length; i++) {
@@ -10,7 +10,7 @@ const bitmask = function () {
     ret.__proto__ = BitmaskPrototype;
     return ret;
 };
-const BitmaskPrototype = {
+const bitmaskProto = {
     set: function () {
         for (let i = 0; i < arguments.length; i++)
             this.state = this.state |= 1 << this.variables[arguments[i]];
