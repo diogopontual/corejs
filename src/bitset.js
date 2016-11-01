@@ -25,26 +25,6 @@ const bitsetProto = {
         this.arr[Math.trunc(idx / 8)] &= 1 << ~(idx % 8);
         return this;
     },
-    compress: function (zeroLength = 4) {
-        let ret = []
-        let oneLength = 8 - zeroLength, zeroMax = Math.pow(2,zeroLength) - 1, oneMax = Math.pow(2,oneLength) - 1, current = this.get(0), last = current, count = 0, byte = 0;
-        for (let i = 0; i < this.length; i++) {
-            current = this.get(i);
-            console.log(current);
-            if(current != last){
-                if(last){
-                    count = count << zeroLength;
-                }
-                byte |= count;
-                ret.push(byte);
-                count = 0;
-            }
-            count++;
-            current = last;
-        } 
-        ret.push(byte);
-        return ret;
-    },
     toString: function () {
         let r = '';
         for (let i = 0; i < this.length; i++) {
@@ -53,9 +33,3 @@ const bitsetProto = {
         return r;
     }
 };
-
-let b = bitset(16);
-b.set(7)
-b.unset(7)
-b.set(15)
-console.log(b.compress());
